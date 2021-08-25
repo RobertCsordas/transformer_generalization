@@ -1,0 +1,37 @@
+program: main.py
+command:
+  - ${env}
+  - python3
+  - ${program}
+  - ${args}
+method: grid
+metric:
+  name: validation/mean_accuracy
+  goal: maximize
+parameters:
+  log:
+    value: wandb
+  profile:
+    value: cfq_trafo
+  transformer.variant:
+    values:
+      - relative
+      - noscale
+  cfq.split:
+    values:
+      - mcd1
+      - mcd2
+      - mcd3
+  max_length_per_batch:
+    value: 50
+  amp:
+    value: 1
+  sweep_id_for_grid_search:
+    distribution: categorical
+    values:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+

@@ -1,0 +1,35 @@
+program: main.py
+command:
+  - ${env}
+  - python3
+  - ${program}
+  - ${args}
+method: grid
+metric:
+  name: validation/mean_accuracy
+  goal: maximize
+parameters:
+  name:
+    value: cogs_trafo_small
+  log:
+    value: wandb
+  profile:
+    value: cogs_trafo_small
+  transformer.variant:
+    value: opennmt
+  cogs.generalization_test_interval:
+    value: 500
+  test_interval:
+    value: 500
+  test_batch_size:
+    value: 512
+  stop_after:
+    value: 50000
+  sweep_id_for_grid_search:
+    distribution: categorical
+    values:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5

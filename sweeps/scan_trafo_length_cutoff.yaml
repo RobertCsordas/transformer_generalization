@@ -1,0 +1,50 @@
+program: main.py
+command:
+  - ${env}
+  - python3
+  - ${program}
+  - ${args}
+method: grid
+metric:
+  name: validation/mean_accuracy
+  goal: maximize
+parameters:
+  name:
+    value: trafo_scan_length_cutoff
+  log:
+    value: wandb
+  profile:
+    value: trafo_scan
+  stop_after:
+    value: 50000
+  scan.length_cutoff:
+    values:
+      - 22
+      - 24
+      - 25
+      - 26
+      - 27
+      - 28
+      - 30  
+      - 32
+      - 33
+      - 36
+      - 40
+  transformer.variant:
+    values:
+      - noscale
+      - universal_noscale
+      - relative
+      - relative_universal
+      - scaledinit
+      - universal_scaledinit
+  task:
+    value: scan_resplit_transformer
+  sweep_id_for_grid_search:
+    distribution: categorical
+    values:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5

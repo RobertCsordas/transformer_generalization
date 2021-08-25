@@ -1,0 +1,153 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "COGS trafo",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "cogs_trafo", "--profile", "pcfg_trafo", "--task", "cogs_transformer", "--log", "tb",
+                     "--keep_alive", "1", "-reset", "1", "-stop_after", "1000000"]
+        },
+
+        {
+            "name": "Scan trafo - length",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "trafo_scan_l", "--profile", "trafo_scan", "--task", "trafo_scan", "--log", "tb",
+                     "--keep_alive", "1", "-reset", "1", "-stop_after", "1000000",  "-scan.train_split", "length",
+                    "--test_interval", "1000"]
+        },
+
+        {
+            "name": "Scan trafo - add turn left",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "trafo_scan_a", "--profile", "trafo_scan", "--task", "trafo_scan", "--log", "tb",
+                     "--keep_alive", "1", "-reset", "1", "-stop_after", "1000000",  "-scan.train_split", "turn_left",
+                    "--test_interval", "1000"]
+        },
+
+        {
+            "name": "Scan relative trafo",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "rel_trafo_scan", "--profile", "trafo_scan", "--task", "trafo_scan", "--log", "tb",
+                     "--keep_alive", "1", "-reset", "1", "-stop_after", "1000000", "-test_interval", "1000",
+                     "-scan.train_split", "turn_left", "-transformer.variant", "relative"]
+        },
+
+        {
+            "name": "Scan relative trafo - length split",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "rel_trafo_scan", "--profile", "trafo_scan", "--task", "trafo_scan", "--log", "tb",
+                     "--keep_alive", "1", "-reset", "1", "-stop_after", "1000000", "-test_interval", "1000",
+                     "-scan.train_split", "length", "-transformer.variant", "relative"]
+        },
+
+        {
+            "name": "Scan relative trafo - custom_length_split",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "rel_trafo_scan", "--profile", "trafo_scan", "--task", "scan_resplit_transformer", "--log", "tb",
+                     "--keep_alive", "1", "-reset", "1", "-stop_after", "1000000", "-test_interval", "1000",
+                     "-transformer.variant", "relative"]
+        },
+
+        {
+            "name": "Simple trafo scan - EOS paper",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "trafo_scan_eos", "--profile", "trafo_scan", "--task", "trafo_scan", "--log", "tb",
+                     "--keep_alive", "1", "-reset", "1", "-stop_after", "1000000",  "-scan.train_split", "length",
+                     "--state_size", "128", "-transformer.ff_multiplier", "2", "-transformer.n_heads", "4", 
+                     "-transformer.encoder_n_layers", "3", "-transformer.decoder_n_layers", "3",
+                    "--test_interval", "1000"]
+        },
+
+        {
+            "name": "COGS relative trafo",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "cogs_trafo_rel", "--profile", "cogs_trafo_small", "--log", "tb",
+                     "--keep_alive", "1", "-reset", "1", "-stop_after", "1000000", "-batch_size", "64", "-test_interval", "1000",
+                    "--test_batch_size", "64", "--cogs.generalization_test_interval", "2500", "-label_smoothing", "0",
+                    "-transformer.encoder_n_layers", "2", "-transformer.decoder_n_layers", "2", "-transformer.ff_multiplier", "1",
+                    "-transformer.n_heads", "4", "-transformer.variant", "relative"]
+        },
+        
+        {
+            "name": "PCFG trafo - productivity",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "pcfg_trafo_prod", "--profile", "pcfg_trafo", "--log", "tb",
+                     "--keep_alive", "1", "-reset", "1", "-stop_after", "1000000", "-lr", "1e-4",
+                     "-pcfg.split", "productivity", "-test_interval", "1000", "-amp", "1"]
+        },
+
+        {
+            "name": "PCFG reltrafo",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "pcfg_rell_trafo", "--profile", "pcfg_trafo", "--log", "tb",
+                     "--keep_alive", "1", "-reset", "1", "-stop_after", "1000000", "-lr", "1e-4",
+                     "-test_interval", "1000", "-task", "pcfg_transformer", "-amp", "1",
+                     "-transformer.variant", "relative"]
+        },
+
+       
+        {
+            "name": "CFQ trafo",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "cfq_trafo", "--profile", "pcfg_trafo", "--log", "tb", "-task", "cfq_trafo",
+                     "--keep_alive", "1", "-reset", "1", "-stop_after", "1000000", "-lr", "1e-4", "-amp", "1", 
+                    "-test_interval", "100", "-log_sample_level_loss", "1"]
+        },
+
+        {
+            "name": "DM Math relative add or sub",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "dm_math_add_or_sub", "--profile", "deepmind_math", "--task", "dm_math_transformer", 
+                     "--log", "tb", "--keep_alive", "1", "-reset", "1", "-stop_after", "1000000",
+                     "--test_interval", "1000", "-transformer.variant", "relative", "-dm_math.task",
+                     "arithmetic__add_or_sub", "-batch_size", "256"]
+        },
+
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "Debug File",
+            "program": "${file}",
+            "cwd": "${fileDirname}"
+        }
+    ]
+}

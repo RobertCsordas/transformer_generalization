@@ -1,0 +1,40 @@
+program: main.py
+command:
+  - ${env}
+  - python3
+  - ${program}
+  - ${args}
+method: grid
+metric:
+  name: validation/mean_accuracy
+  goal: maximize
+parameters:
+  name:
+    value: scan
+  log:
+    value: wandb
+  profile:
+    value: pcfg_trafo
+  task:
+    value: pcfg_transformer
+  transformer.variant:
+    values:
+      - scaledinit
+      - opennmt
+      - noscale
+  pcfg.split:
+    value: simple
+  lr:
+    value: 1e-4
+  stop_after:
+    value: 300000
+  amp:
+    value: 1
+  sweep_id_for_grid_search:
+    distribution: categorical
+    values:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
