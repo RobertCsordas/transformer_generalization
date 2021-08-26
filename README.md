@@ -1,6 +1,6 @@
 # Codebase for training transformers on systematic generalization datasets.
 
-The official repository for our paper "The Devil is in the Detail: Simple Tricks Improve Systematic Generalization of Transformers".
+The official repository for our EMNLP 2021 paper "The Devil is in the Detail: Simple Tricks Improve Systematic Generalization of Transformers".
 
 ## Setup
 
