@@ -1,6 +1,6 @@
 # Codebase for training transformers on systematic generalization datasets.
 
-The official repository for our EMNLP 2021 paper "The Devil is in the Detail: Simple Tricks Improve Systematic Generalization of Transformers".
+The official repository for our EMNLP 2021 paper [The Devil is in the Detail: Simple Tricks Improve Systematic Generalization of Transformers](https://arxiv.org/abs/2108.12284).
 
 ## Setup
 
@@ -67,7 +67,7 @@ If you want to reproduce individual plots, it can be done by running individial 
 ### Running experiments locally
 
 It is possible to run single experiments with Tensorboard without using Weights and Biases. This is intended to be used for debugging the code locally.
-
+  
 If you want to run experiments locally, you can use ```run.py```:
 
 ```bash
@@ -83,3 +83,15 @@ Note that the plotting scripts work only with Weights and Biases.
 ### Reducing memory usage
 
 In case some tasks won't fit on your GPU, play around with "-max_length_per_batch <number>" argument. It can trade off memory usage/speed by slicing batches and executing them in multiple passes. Reduce it until the model fits.
+  
+### BibTex
+```
+@inproceedings{csordas2021devil,
+      title={The Devil is in the Detail: Simple Tricks Improve Systematic Generalization of Transformers}, 
+      author={R\'obert Csord\'as and Kazuki Irie and J\"urgen Schmidhuber},
+      booktitle={Proc. Conf. on Empirical Methods in Natural Language Processing (EMNLP)},
+      year={2021},
+      month={November},
+      address={Punta Cana, Dominican Republic}
+}
+```
