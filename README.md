@@ -2,6 +2,8 @@
 
 The official repository for our EMNLP 2021 paper [The Devil is in the Detail: Simple Tricks Improve Systematic Generalization of Transformers](https://arxiv.org/abs/2108.12284).
 
+Please note that this repository is a cleaned-up version of the internal research repository we use. In case you encounter any problems with it, please don't hesitate to contact me.
+
 ## Setup
 
 This project requires Python 3 (tested with Python 3.8 and 3.9) and PyTorch 1.8.
